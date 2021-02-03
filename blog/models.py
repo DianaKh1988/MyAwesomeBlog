@@ -1,6 +1,10 @@
 from django.db import models
+from django.forms import DateField
 
 
 class Blog(models.Model):
-    event_image = models.ImageField(upload_to='event_images/')
-    event_text = models.CharField(max_length=300)
+    blog_title = models.CharField(max_length=30)
+    blog_date = DateField(auto_now=True)
+    blog_text = models.CharField(max_length=500)
+    blog_image = models.ImageField(upload_to='blog_images/')
+
