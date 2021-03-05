@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,50 +56,32 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link" href="{% static 'AboutMe' %}" style="color: #730FC3">About me</a>
-                     <a target="_blank" rel="noopener noreferrer" class="nav-link" href="https://vk.com/id610135407"
-                        style="color: #730FC3">VK</a>
-                    <a  class="nav-link" href="{% url 'showblog' %}" style="color: #730FC3">Blog</a>
+                    <a class="nav-link" href="" style="color: #730FC3">About me</a>
+                    <a target="_blank" rel="noopener noreferrer" class="nav-link" href="https://vk.com/id610135407" style="color: #730FC3">VK</a>
+                    <a class="nav-link active" href="#" style="color: #730FC3">Blog</a>
                 </div>
             </div>
         </div>
     </nav>
 </header>
 
-<main>
+<main role="main" class="pl-3">
 
-    <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <p class="lead text-muted">Hello there! I am excited see you here! You can write about right now!</p>
-                <p>
-                    <a href="mailto:dianakhromova88@gmail.com" class="btn btn-primary my-2"
-                       style="background-color: #DE9AE8; color: #730FC3">Mail Me!</a>
-                </p>
+    <h1 class="pt-4 pb-5">Recent Post</h1>
 
-                <img src="{% static 'Hitlertrans.png' %}" height=400 >
-            </div>
-        </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                {% for event in events.all %}
-                <div class="col-mb-4 col-xl-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{ event.event_image.url }}" />
-                        <div class="card-body">
-                            <p class="card-text">{{ event.event_text }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+    {% for post in posts.all %}
+        <a href="" style="color: #730FC3"><h2 >{{ post.title }}</h2></a>
+        <br/>
+        <img src="{{ post.image.url }}" height=300 width="300" class="img-fluid">
+        <br/>
+        <p>{{ post.get_summary }}</p>
+        {{ post.date }}
+        <br/>
+        <br/>
+    {% endfor %}
 
 </main>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
