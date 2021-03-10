@@ -11,3 +11,6 @@ class Post(models.Model):
     def get_summary(self):
         return self.text[:40]
 
+    def __str__(self):
+        return self.title
+
